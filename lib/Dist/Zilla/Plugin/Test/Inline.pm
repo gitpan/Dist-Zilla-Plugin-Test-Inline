@@ -1,7 +1,7 @@
 use strict;
 package Dist::Zilla::Plugin::Test::Inline;
 # ABSTRACT: Create test files for inline tests in POD sections
-our $VERSION = '0.0100000'; # VERSION
+our $VERSION = '0.011000'; # VERSION
 
 
 use Moose;
@@ -112,6 +112,7 @@ sub gather_files {
 	
 }
 
+
 1;
 
 __END__
@@ -124,36 +125,21 @@ Dist::Zilla::Plugin::Test::Inline - Create test files for inline tests in POD se
 
 =head1 VERSION
 
-version 0.0100000
+version 0.011000
 
-=head1 DESCRIPTION
+=head1 SYNOPSIS
 
-The code of this Dist::Zilla file gatherer plugin is mainly taken from
-L<https://github.com/moose/moose/blob/master/inc/ExtractInlineTests.pm>.
+In your C<dist.ini>:
 
-This plugin integrates L<Test::Inline> into C<Dist::Zilla>.
-It scans all modules for inline tests in POD sections that are embedded between
-the keywords 
+	[Test::Inline]
 
-	=begin testing
-	...
-	=end testing
+In your module:
 
-and exports them into .t files when building your module.
-Multiple of these test sections may be specified within one file.
-
-For more details about the great idea of inline tests see L<Test::Inline>.
-
-Please note that this plugin can also handle L<Moops>-like class and role
-definitions.
-
-Example:
 	# My/AddressRange.pm
 
 	=begin testing
 
 	use Test::Exception;
-
 	dies_ok {
 		My::AddressRange->list_from_range('10.2.3.A', '10.2.3.5')
 	} "list_from_range() complains about invalid address";
@@ -163,6 +149,25 @@ Example:
 	sub list_from_range {
 		# ...
 	}
+
+This will result in a file C<t/inline-tests/my_addressrange.t> in your distribution.
+
+=head1 DESCRIPTION
+
+This plugin integrates L<Test::Inline> into C<Dist::Zilla>.
+
+It scans all modules for inline tests in POD sections that are embedded between
+the keywords 
+
+	=begin testing
+	...
+	=end testing
+
+and exports them into C<t/inline-tests/*.t> files when C<Dist::Zilla> builds
+your module. Multiple of these test sections may be specified within one file.
+
+Please note that this plugin (in contrast to pure L<Test::Inline>) can also
+handle L<Moops>-like class and role definitions.
 
 =head1 EXTENDS
 
@@ -179,7 +184,20 @@ Example:
 Required by role L<Dist::Zilla::Role::FileGatherer>.
 
 Searches for inline test code in POD sections using L<Test::Inline>, creates
-in-memory test files from them and passes them to L<Dist::Zilla>.
+in-memory test files and passes them to L<Dist::Zilla>.
+
+=head1 ACKNOWLEDGEMENTS
+
+The code of this Dist::Zilla file gatherer plugin is mainly taken from
+L<https://github.com/moose/moose/blob/master/inc/ExtractInlineTests.pm>.
+
+=over 4
+
+=item *
+
+Dave Rolsky <autarch@urth.org>, who basically wrote all this but left the honor of making a plugin of it to me ;-)
+
+=back
 
 =head1 AUTHOR
 

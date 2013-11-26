@@ -1,0 +1,9 @@
+Revision history for perl module Dist::Zilla::Plugin::Test::Inline
+ 
+0.011000 2013-11-26
+ - Updated documentation
+ - Added this Changes file
+ - Shortened version number
+
+0.0100000 2013-11-26
+ - Initial release
