@@ -1,0 +1,62 @@
+NAME
+    Dist::Zilla::Plugin::Test::Inline - Create test files for inline tests
+    in POD sections
+
+VERSION
+    version 0.0100000
+
+DESCRIPTION
+    The code of this Dist::Zilla file gatherer plugin is mainly taken from
+    <https://github.com/moose/moose/blob/master/inc/ExtractInlineTests.pm>.
+
+    This plugin integrates Test::Inline into "Dist::Zilla". It scans all
+    modules for inline tests in POD sections that are embedded between the
+    keywords
+
+            =begin testing
+            ...
+            =end testing
+
+    and exports them into .t files when building your module. Multiple of
+    these test sections may be specified within one file.
+
+    For more details about the great idea of inline tests see Test::Inline.
+
+    Please note that this plugin can also handle Moops-like class and role
+    definitions.
+
+    Example: # My/AddressRange.pm
+
+            =begin testing
+
+            use Test::Exception;
+
+            dies_ok {
+                    My::AddressRange->list_from_range('10.2.3.A', '10.2.3.5')
+            } "list_from_range() complains about invalid address";
+
+            =end testing
+
+            sub list_from_range {
+                    # ...
+            }
+
+EXTENDS
+    *   Moose::Object
+
+METHODS
+  gather_files
+    Required by role Dist::Zilla::Role::FileGatherer.
+
+    Searches for inline test code in POD sections using Test::Inline,
+    creates in-memory test files from them and passes them to Dist::Zilla.
+
+AUTHOR
+    Jens Berthold <jens.berthold@jebecs.de>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Jens Berthold.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

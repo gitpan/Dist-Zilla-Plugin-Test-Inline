@@ -1,0 +1,13 @@
+Build.PL
+LICENSE
+MANIFEST
+META.yml
+README
+dist.ini
+doc/Dist-Zilla-Plugin-Test-Inline.html
+lib/Dist/Zilla/Plugin/Test/Inline.pm
+perlcritic.rc
+t/author-critic.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t
+weaver.ini
