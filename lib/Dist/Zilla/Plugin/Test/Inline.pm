@@ -1,7 +1,7 @@
 use strict;
 package Dist::Zilla::Plugin::Test::Inline;
 # ABSTRACT: Create test files for inline tests in POD sections
-our $VERSION = '0.011000'; # VERSION
+our $VERSION = '0.011001'; # VERSION
 
 
 use Moose;
@@ -125,7 +125,7 @@ Dist::Zilla::Plugin::Test::Inline - Create test files for inline tests in POD se
 
 =head1 VERSION
 
-version 0.011000
+version 0.011001
 
 =head1 SYNOPSIS
 
@@ -145,7 +145,9 @@ In your module:
 	} "list_from_range() complains about invalid address";
 
 	=end testing
-
+	
+	=cut
+	
 	sub list_from_range {
 		# ...
 	}

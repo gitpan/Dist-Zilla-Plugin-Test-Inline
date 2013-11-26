@@ -1,5 +1,9 @@
 Revision history for perl module Dist::Zilla::Plugin::Test::Inline
- 
+
+0.011001 2013-11-26
+ [DOCUMENTATION]
+ - Corrected POD in code example
+
 0.011000 2013-11-26
  - Updated documentation
  - Added this Changes file
@@ -7,3 +11,4 @@ Revision history for perl module Dist::Zilla::Plugin::Test::Inline
 
 0.0100000 2013-11-26
  - Initial release
+

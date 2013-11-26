@@ -20,4 +20,4 @@ requires:
   Test::Inline: 2.213
   parent: 0.228
   perl: v5.8.8
-version: 0.011000
+version: 0.011001

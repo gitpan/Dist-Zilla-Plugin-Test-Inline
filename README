@@ -3,7 +3,7 @@ NAME
     in POD sections
 
 VERSION
-    version 0.011000
+    version 0.011001
 
 SYNOPSIS
     In your "dist.ini":
@@ -22,7 +22,9 @@ SYNOPSIS
             } "list_from_range() complains about invalid address";
 
             =end testing
-
+        
+            =cut
+        
             sub list_from_range {
                     # ...
             }

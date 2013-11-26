@@ -17,7 +17,7 @@ my %module_build_args = (
     "Jens Berthold <jens.berthold\@jebecs.de>"
   ],
   "dist_name" => "Dist-Zilla-Plugin-Test-Inline",
-  "dist_version" => "0.011000",
+  "dist_version" => "0.011001",
   "license" => "perl",
   "module_name" => "Dist::Zilla::Plugin::Test::Inline",
   "recommends" => {},
